@@ -57,33 +57,10 @@ export default function Header(){
                 </li>
                 <li className="text-white-500 hover:text-white-500 hover:text-lg">
                   <a href="/galery">Galeria</a>
-                </li>
-                {/* <li className="text-white-500 hover:text-white-500 hover:text-lg">
-                  <a href="/projects">Projetos</a>
-                </li>
-                <li className="text-white-500 hover:text-white-500 hover:text-lg">
-                  <a href="/contact">Contato</a>
-                </li> */}
-              </ul>
-  
-              {/* <button className="mt-3 space-y-2 lg:hidden md:hidden md:inline-block">
-                <Link
-                  href="/login"
-                  className="inline-block w-full px-4 py-2 text-center text-blue-500 bg-white-500 rounded-md shadow hover:bg-blue-500 hover:text-white-500"
-                >
-                  Login
-                </Link>
-              </button> */}
+                </li>                
+              </ul>            
             </div>
-          </div>
-          <div className="hidden space-x-2 md:inline-block">
-            <a
-              href="#"
-              className="px-4 py-2 text-blue-300 bg-white-500 rounded-md shadow hover:bg-blue-500 hover:text-white-500"
-            >
-              Login
-            </a>
-          </div>
+          </div>         
         </div>
       </nav>
     )
