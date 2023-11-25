@@ -115,9 +115,9 @@ export function MainView({paths, files, selectSong}) {
           {/* <Print>{paths}</Print> */}
           {/* <Print>{files}</Print>  */}
           {paths.reverse().map((data) => (
-            <section key={data.name} className="mt-9 first:mt-0">
+            <section key={data.name} className="mt-9 first:mt-0 ">
               <div className="flex flex-row items-center justify-between">
-                <h2 className="text-stone-100 font-bold text-2xl">
+                <h2 className=" text-stone-100 font-bold text-2xl ">
                   {data.name}
                 </h2>
                 {/* <Button variant="link" className="font-semibold">
