@@ -57,7 +57,13 @@ export default function Header(){
                 </li>
                 <li className="text-white-500 hover:text-white-500 hover:text-lg">
                   <a href="/galery">Galeria</a>
-                </li>                
+                </li>
+                <li className="text-white-500 hover:text-white-500 hover:text-lg">
+                  <a href="/movies">Videos</a>
+                </li>
+                <li className="text-white-500 hover:text-white-500 hover:text-lg">
+                  <a href="/letters">Letras</a>
+                </li>                  
               </ul>            
             </div>
           </div>         
