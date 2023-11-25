@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+<<<<<<< HEAD
   typescript: {
     // !! WARN !!
     // Dangerously allow production builds to successfully complete even if
@@ -17,3 +18,8 @@ const nextConfig = {
 module.exports = nextConfig;
 
 
+=======
+}
+
+module.exports = nextConfig
+>>>>>>> 434c1bc9a8f3f3f9d60c497df5d621381ddeb1fd
