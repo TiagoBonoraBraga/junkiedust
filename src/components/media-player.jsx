@@ -17,6 +17,7 @@ const MediaPlayer = ({playlist, songPosition}, ref) => {
  };
   
   const handleClickNext = () => {
+    songPosition = songPosition < playlist.length - 1 ? songPosition + 1 : 0
     console.log('click next')
     setTrackIndex((currentTrack) =>
       currentTrack < playlist.length - 1 ? currentTrack + 1 : 0
@@ -24,19 +25,20 @@ const MediaPlayer = ({playlist, songPosition}, ref) => {
   };
 
   const handleEnd = () => {
+    // songPosition < playlist.length - 1 ? songPosition + 1 : 0
     console.log('end')
     setTrackIndex((currentTrack) =>
       currentTrack < playlist.length - 1 ? currentTrack + 1 : 0
     );
   }
-
   return (
     <>
-    <div>ESTAMOS NA MUSICA?{currentTrack}</div>
+    <p className='text-center m-0'>{playlist[songPosition].filename} - {playlist[songPosition].filename}</p>
     <AudioPlayer
       volume="0.5"
-      src={playlist[currentTrack].src}
+      src={playlist[songPosition].src}
       showSkipControls
+      autoPlayAfterSrcChange={true}
       onClickNext={handleClickNext}
       onEnded={handleEnd}
     // Try other props!

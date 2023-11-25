@@ -28,8 +28,8 @@ export function MainView({paths, files, selectSong}) {
   const handleSelectSong = (music) => {
     const index = files.map(e => e.src).indexOf(music)
     selectSong(index)    
-    // console.log(index);
-    // console.log(event.value);
+    console.log(index);
+    console.log(music);
   };
 
 
@@ -46,10 +46,7 @@ export function MainView({paths, files, selectSong}) {
                     <Icons.chevronLeft className="absolute inset-0 m-auto h-4 w-4 text-white" />
                   </Button>
                 </TooltipTrigger>
-                <TooltipContent>Go back</TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
-            <TooltipProvider>
+                <TooltipContent>Go back</handleSelectSong
               <Tooltip>
                 <TooltipTrigger asChild>
                   <Button className="inline-block relative h-8 w-8 p-3 rounded-full bg-black/80 hover:bg-black/80">
@@ -127,17 +124,21 @@ export function MainView({paths, files, selectSong}) {
                   Show all
                 </Button> */}
               </div>
-              <div className="mt-6 grid grid-cols-[repeat(auto-fit,minmax(200px,200px))] overflow-hidden grid-rows-[1fr_0_0_0_0_0] items-stretch justify-start gap-x-6 ">
+              <div className="mt-6 grid grid-cols-[repeat(auto-fit,minmax(180px,_1fr))] overflow-hidden grid-rows-[1fr_0_0_0_0_0] items-stretch justify-start gap-x-6">
                 {data.files.map((item) => (
-                  <Button onClick={()=>handleSelectSong(item.src)}  key={item.src}>
+                  <button  onClick={()=>handleSelectSong(item.src)}   key={item.src} >
                   <Card
-                    key={item.src}
+                  
                     id={item.filename}
                     image='/default.png'
                     title={item.dirName}
                     text={item.filename}
-                  />
-                  </Button>
+
+
+                  >
+                  </Card>
+                  </button>
+
                 ))}
               </div>
             </section>
