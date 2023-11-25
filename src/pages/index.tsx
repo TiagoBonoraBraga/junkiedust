@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import { Sidebar } from "@/components/sidebar";
 import { MainView } from "@/components/main-view";
@@ -99,19 +98,3 @@ export default Home;
 //     </main>
 //   )
 // }
-=======
-import Layout from "@/components/templates/Layout"
-
-
-export default function Home() {
-  return (
-    <main
-      className='flex min-h-screen flex-col items-center justify-between p-5 '
-    >
-     <Layout>
-      
-     </Layout>
-    </main>
-  )
-}
->>>>>>> 434c1bc9a8f3f3f9d60c497df5d621381ddeb1fd
