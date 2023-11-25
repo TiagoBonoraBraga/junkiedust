@@ -18,10 +18,10 @@ export function Card({ id, image, title, text }) {
     <>
       <ContextMenu>
         <ContextMenuTrigger>
-          <div className="group py-4 px-4 bg-[#181818] rounded-md hover:bg-[#282828] transition-colors cursor-pointer">
-            <div className="relative w-80 bg-gradient-to-br from-violet-800 to-teal-500/80 rounded-md">
+          <div className="group py-2 px-2  flex flex-col justify-center items-center bg-[#181818] rounded-md hover:bg-[#282828] transition-colors cursor-pointer">
+            <div className="relative w-32  bg-gradient-to-br from-violet-800 to-teal-500/80 rounded-md">
               <ResponsiveImage
-                ratio={1 / 1}
+                ratio={3 / 2}
                 src={image}
                 alt={image}
                 sizes="(max-width: 910px) 50vw,
@@ -45,7 +45,7 @@ export function Card({ id, image, title, text }) {
               <p className="font-semibold text-white truncate" title={title}>
                 {title}
               </p>
-              <p className="font-semibold text-stone-400 text-sm line-clamp-2">
+              <p className="font-semibold text-stone-400 text-sm line-clamp-2 flex justify-start items-">
                 {text}
               </p>
             </div>

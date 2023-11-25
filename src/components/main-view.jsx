@@ -124,7 +124,8 @@ export function MainView({paths, files, selectSong}) {
                   Show all
                 </Button> */}
               </div>
-              <div className="mt-6 grid grid-cols-[repeat(auto-fit,minmax(180px,_1fr))] overflow-hidden grid-rows-[1fr_0_0_0_0_0] items-stretch justify-start gap-x-6">
+              <div className="mt-6 grid grid-cols-[repeat(auto-fit,minmax(180px,_1fr))] overflow-hidden grid-rows-[fr_0_0_0_0_0] items-stretch justify-start gap-x-6">
+              
                 {data.files.map((item) => (
                   <button  onClick={()=>handleSelectSong(item.src)}   key={item.src} >
                   <Card

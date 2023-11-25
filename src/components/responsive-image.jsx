@@ -16,11 +16,12 @@ export function ResponsiveImage({
   return (
     <div
       style={{ width: width }}
-      className={cn("max-w-full overflow-hidden", rounded && "rounded-md")}
+      className={cn("max-w-full overflow-hidden ", rounded && "rounded-md")}
     >
-      <AspectRatio ratio={ratio}>
+      <AspectRatio ratio={ratio} >
+        
         <Image
-          className={cn("object-cover", className)}
+          className={cn("object-cover ", className)}
           alt={alt}
           fill
           priority={priority}
