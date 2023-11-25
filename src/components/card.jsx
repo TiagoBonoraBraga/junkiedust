@@ -19,7 +19,7 @@ export function Card({ id, image, title, text }) {
       <ContextMenu>
         <ContextMenuTrigger>
           <div className="group py-4 px-4 bg-[#181818] rounded-md hover:bg-[#282828] transition-colors cursor-pointer">
-            <div className="relative w-full bg-gradient-to-br from-violet-800 to-teal-500/80 rounded-md">
+            <div className="relative w-80 bg-gradient-to-br from-violet-800 to-teal-500/80 rounded-md">
               <ResponsiveImage
                 ratio={1 / 1}
                 src={image}

@@ -1,10 +1,11 @@
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import { Sidebar } from "@/components/sidebar";
+// import { Sidebar } from "@/components/sidebar";
 import { MainView } from "@/components/main-view";
 import  MediaPlayer from "@/components/media-player";
-import { Print } from "@/components/print";
+// import { Print } from "@/components/print";
 import  { getAllFilesAndPaths }  from '@/lib/files';
 import {useState, useRef, MutableRefObject} from "react";
+import Layout from "@/components/templates/Layout";
 
 interface ButtonProps {
   onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
@@ -39,19 +40,22 @@ function Home({ files, paths }: InferGetServerSidePropsType<typeof getServerSide
 
 
   return (
+    <Layout>
     <div className="w-full grid grid-rows-[1fr_90px]">
       {/* <Print>{paths}</Print>
       <Print>{files}</Print> */}
-      <div className="w-full h-[calc(100vh_-_90px)] grid grid-cols-[260px_1fr] justify-center">
+      {/* h-[calc(100vh_-_90px)] grid grid-cols-[260px_1fr]  dentro da div debaixo pra dividir dae abre o SideBar*/}
+      <div className="w-full  justify-center">
       {/* <>|{songPosition}|</> */}
       {/* <button onClick={event => handleSelectSong(5)} >Call child functions</button> */}
-        <Sidebar />
+        {/* <Sidebar /> */}
         {/* <MainView files={files} paths={paths}  selectSong={(position: number) => handleSelectSong(position)}/> */}
         <MainView files={files} paths={paths}  selectSong={(position: number) => handleSelectSong(position)}/>
       </div>
       <MediaPlayer songPosition={songPosition} playlist={files} />
       {/* <MediaPlayer ref={childRef} playlist={files} /> */}
     </div>
+    </Layout>
   );
 }
 
