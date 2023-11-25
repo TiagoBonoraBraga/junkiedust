@@ -16,7 +16,7 @@ export function ResponsiveImage({
   return (
     <div
       style={{ width: width }}
-      className={cn("max-w-80 overflow-hidden", rounded && "rounded-md")}
+      className={cn("max-w-full overflow-hidden", rounded && "rounded-md")}
     >
       <AspectRatio ratio={ratio}>
         <Image
