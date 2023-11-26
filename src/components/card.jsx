@@ -18,8 +18,8 @@ export function Card({ id, image, title, text }) {
     <>
       <ContextMenu>
         <ContextMenuTrigger>
-          <div className="group py-2 px-2  flex flex-col justify-center items-center bg-[#181818] rounded-md hover:bg-[#282828] transition-colors cursor-pointer">
-            <div className="relative w-32  bg-gradient-to-br from-violet-800 to-teal-500/80 rounded-md">
+          <div className="group py-2 px-2 flex flex-col justify-center items-center bg-[#181818] rounded-md hover:bg-[#282828] transition-colors cursor-pointer">
+            {/* <div className="relative w-32  bg-gradient-to-br from-violet-800 to-teal-500/80 rounded-md">
               <ResponsiveImage
                 ratio={3 / 2}
                 src={image}
@@ -40,8 +40,9 @@ export function Card({ id, image, title, text }) {
               <div className="opacity-0 transition-opacity group-hover:opacity-100 absolute bottom-3 right-3 h-14 w-14 rounded-full bg-green-500 z-10 shadow-md flex items-center justify-center">
                 <Icons.play className="h-5 w-5 text-black" />
               </div>
-            </div>
-            <div className="mt-4 space-y-1">
+            </div> */}
+            <div>
+              {/* codigo tirado acima div className="mt-2 space-y-1" */}
               <p className="font-semibold text-white truncate" title={title}>
                 {title}
               </p>
