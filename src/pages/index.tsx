@@ -6,6 +6,7 @@ import  MediaPlayer from "@/components/media-player";
 import  { getAllFilesAndPaths }  from '@/lib/files';
 import {useState, useRef, MutableRefObject} from "react";
 import Layout from "@/components/templates/Layout";
+import Head from "@/components/Head";
 
 interface ButtonProps {
   onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
@@ -20,6 +21,7 @@ type File = {
 type Path = {
   name:string
 }
+
 
 function Home({ files, paths }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const [songPosition, setSongPosition] = useState(0);
@@ -40,6 +42,8 @@ function Home({ files, paths }: InferGetServerSidePropsType<typeof getServerSide
 
 
   return (
+    <>    
+    <Head />
     <Layout>
     <div className="w-full grid grid-rows-[1fr_90px]">
       {/* <Print>{paths}</Print>
@@ -52,10 +56,13 @@ function Home({ files, paths }: InferGetServerSidePropsType<typeof getServerSide
         {/* <MainView files={files} paths={paths}  selectSong={(position: number) => handleSelectSong(position)}/> */}
         <MainView files={files} paths={paths}  selectSong={(position: number) => handleSelectSong(position)}/>
       </div>
+      
       <MediaPlayer songPosition={songPosition} playlist={files} />
+      
       {/* <MediaPlayer ref={childRef} playlist={files} /> */}
     </div>
     </Layout>
+    </>
   );
 }
 
