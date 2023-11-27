@@ -6,7 +6,7 @@ export default function SeoHead() {
 
     return (
         <Head>          
-            <title>'UNKIE DUST - STONER PSICODELIC</title>
+            <title>JUNKIE DUST - STONER PSICODELIC</title>
             <meta name="robots" content='follow, index' />
             <meta content=' JUNKIE DUST - STONER PSICODELIC - JUNKIE DUST os sons mais pesados, lentos e psicodélicos desse plano terreno' name="description" />
             <meta property="og:url" content='https://lanchoneteagarikov.com/' />
