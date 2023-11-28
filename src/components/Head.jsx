@@ -9,8 +9,8 @@ export default function SeoHead() {
             <title>JUNKIE DUST - STONER PSICODELIC</title>
             <meta name="robots" content='follow, index' />
             <meta content=' JUNKIE DUST - STONER PSICODELIC - JUNKIE DUST os sons mais pesados, lentos e psicodélicos desse plano terreno' name="description" />
-            <meta property="og:url" content='https://lanchoneteagarikov.com/' />
-            <link rel="canonical" href='https://lanchoneteagarikov.com/' />
+            <meta property="og:url" content='https://junkiedust.com/' />
+            <link rel="canonical" href='https://junkiedust.com/' />
             <meta name="application-name" content='JUNKIE DUST - STONER PSICODELIC' />
             <meta name="author" content="Leonardo Maia - Tiago Braga" />
             <link rel="author" href="https://junkiedust.com" />
