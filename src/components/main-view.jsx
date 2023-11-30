@@ -22,12 +22,12 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { siteConfig } from "@/config/site";
 import { Print } from "./print";
 
-export function MainView({paths, files, selectSong}) {
+export function MainView({ paths, files, selectSong }) {
   const [open, setOpen] = useState(false);
   // const [inputValue, setInputValue] = useState(selectSong)
   const handleSelectSong = (music) => {
     const index = files.map(e => e.src).indexOf(music)
-    selectSong(index)    
+    selectSong(index)
     console.log(index);
     console.log(music);
   };
@@ -111,37 +111,65 @@ export function MainView({paths, files, selectSong}) {
             </DropdownMenuContent>
           </DropdownMenu>
         </header>
-        <div className="mt-8 mb-8 px-8">
+        <div className="mt-8 mb-8 px-3">
           {/* <Print>{paths}</Print> */}
           {/* <Print>{files}</Print>  */}
-          {paths.reverse().map((data) => (
+          {paths.map((data) => (
             <section key={data.name} className="mt-9 first:mt-0 ">
-              <div className="flex flex-row items-center justify-between">
+              {/* <div className="flex flex-row items-center justify-between">
                 <h2 className=" text-stone-100 font-bold text-2xl ">
                   {data.name}
                 </h2>
-                {/* <Button variant="link" className="font-semibold">
-                  Show all
-                </Button> */}
+              </div> */}
+
+
+              <div class="max-w-xs mx-auto">
+                <div class="flex flex-col">
+                  <div class="overflow-x-auto shadow-md sm:rounded-lg">
+                    <div class="inline-block min-w-full align-middle">
+                      <div class="overflow-hidden ">
+                        <table class="min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-700">
+                          <thead class="bg-gray-100 dark:bg-gray-700">
+                            <tr>
+                              <th scope="col" class="py-3 px-6 text-xs font-bold tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                              {data.name}
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
+                          {data.files.map((item) => (
+                            <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
+                            <button onClick={() => handleSelectSong(item.src)} key={item.src} >                            
+                              <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">{item.filename}</td>
+                              </button>
+                            </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="mt-6 grid grid-cols-[repeat(auto-fit,minmax(180px,_1fr))] overflow-hidden grid-rows-[fr_0_0_0_0_0] items-stretch justify-start gap-y-6">
-              
+
+              {/* <div className="mt-6 grid grid-cols-[repeat(auto-fit,minmax(180px,_1fr))] overflow-hidden grid-rows-[fr_0_0_0_0_0] items-stretch justify-start gap-y-6">
+
                 {data.files.map((item) => (
-                  <button  onClick={()=>handleSelectSong(item.src)}   key={item.src} >
-                  <Card
-                  
-                    id={item.filename}
-                    image='/default.png'
-                    title={item.dirName}
-                    text={item.filename}
+                  <button onClick={() => handleSelectSong(item.src)} key={item.src} >
+                    <Card
+
+                      id={item.filename}
+                      image='/default.png'
+                      title={item.dirName}
+                      text={item.filename}
 
 
-                  >
-                  </Card>
+                    >
+                    </Card>
                   </button>
 
                 ))}
-              </div>
+              </div> */}
             </section>
           ))}
         </div>
