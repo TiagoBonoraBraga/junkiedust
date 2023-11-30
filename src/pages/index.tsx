@@ -70,8 +70,8 @@ function Home({ files, paths }: InferGetServerSidePropsType<typeof getServerSide
 export const getServerSideProps: GetServerSideProps = async () => {
 
   const res = getAllFilesAndPaths('./public/songs', [],[])
-  const files: File[] = res.arrayOfFiles;
-  const paths: Path[] = res.arrayOfPaths;
+  const files: File[] = res.arrayOfFiles.reverse();
+  const paths: Path[] = res.arrayOfPaths.reverse();
   // const list = await getAllFiles('/public/songs',[])
   // By returning { props: { posts } }, the Blog component
   // will receive `posts` as a prop at build time
