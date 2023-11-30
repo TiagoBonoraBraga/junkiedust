@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "start:prod": "next start -p 666",
-    "lint": "next lint"
+    "lint": "next lint",
+    "debug:build:prod": "npm run build && NODE_OPTIONS='--inspect' npm run start "
   },
   "dependencies": {
     "@radix-ui/react-aspect-ratio": "^1.0.1",

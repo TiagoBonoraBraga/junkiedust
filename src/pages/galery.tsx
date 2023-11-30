@@ -7,7 +7,8 @@ export default function Galery() {
       className='flex min-h-screen flex-col items-center justify-between  '
     >
      <Layout>
-      
+     <p>removendo erro</p>
+
      </Layout>
     </main>
   )

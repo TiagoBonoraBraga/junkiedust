@@ -4,7 +4,7 @@ export default function Movies( ) {
     return(   
     <div>
         <Layout>
-            
+            <p>removendo erro</p>
         </Layout>
     </div>    
     )

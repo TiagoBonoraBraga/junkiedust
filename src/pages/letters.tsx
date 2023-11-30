@@ -4,7 +4,8 @@ export default function Letters( ) {
     return(   
     <div>
         <Layout>
-            
+        <p>removendo erro</p>
+
         </Layout>
     </div>    
     )
