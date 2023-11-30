@@ -1,14 +1,6 @@
 import { useState } from "react";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Card } from "@/components/card";
 import { Icons } from "@/components/icons";
-import { Button } from "@/components/ui/button";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "./ui/tooltip";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -16,11 +8,9 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
-// import { mainViewData } from "@/data/main-view";
 import { siteConfig } from "@/config/site";
-import { Print } from "./print";
+// import { Print } from "./print";
 
 export function MainView({ paths, files, selectSong }) {
   const [open, setOpen] = useState(false);
@@ -32,54 +22,11 @@ export function MainView({ paths, files, selectSong }) {
     console.log(music);
   };
 
-
-
   return (
     <ScrollArea className="relative bg-[#121212]">
       <div className="pb-4">
         <header className="sticky top-0 h-16 bg-black/80 flex flex-row items-center justify-between px-8 z-10">
-          {/* <div className="space-x-4">
-            <TooltipProvider>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Button className="inline-block relative h-8 w-8 p-3 rounded-full bg-black/80 hover:bg-black/80">
-                    <Icons.chevronLeft className="absolute inset-0 m-auto h-4 w-4 text-white" />
-                  </Button>
-                </TooltipTrigger>
-                <TooltipContent>Go back</handleSelectSong
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Button className="inline-block relative h-8 w-8 p-3 rounded-full bg-black/80 hover:bg-black/80">
-                    <Icons.chevronRight className="absolute inset-0 m-auto h-4 w-4 text-white" />
-                  </Button>
-                </TooltipTrigger>
-                <TooltipContent>Go forward</TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
-          </div> */}
           <DropdownMenu open={open} onOpenChange={setOpen}>
-            {/* <DropdownMenuTrigger className="rounded-full">
-              <div className="relative transition-all flex flex-row items-center justify-center gap-x-2 bg-black p-[2px] rounded-full hover:bg-stone-700/70">
-                <span className="absolute flex h-5 w-5 animate-bounce items-center justify-center -right-2 top-0 z-10">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span>
-                  <span className="relative inline-flex h-3 w-3 rounded-full bg-green-500"></span>
-                </span>
-                <Avatar className="h-7 w-7 shrink-0">
-                  <AvatarImage src={`${siteConfig.links.github.url}.png`} />
-                  <AvatarFallback>EA</AvatarFallback>
-                </Avatar>
-                <span className="hidden lg:block font-semibold text-white leading-none">
-                  {siteConfig.username}
-                </span>
-                <span className="hidden lg:block">
-                  {open ? (
-                    <Icons.caretUp className="h-4 w-4 text-white mr-1" />
-                  ) : (
-                    <Icons.caretDown className="h-4 w-4 text-white mr-1" />
-                  )}
-                </span>
-              </div>
-            </DropdownMenuTrigger> */}
             <DropdownMenuContent
               align="end"
               sideOffset={10}
@@ -116,33 +63,26 @@ export function MainView({ paths, files, selectSong }) {
           {/* <Print>{files}</Print>  */}
           {paths.map((data) => (
             <section key={data.name} className="mt-9 first:mt-0 ">
-              {/* <div className="flex flex-row items-center justify-between">
-                <h2 className=" text-stone-100 font-bold text-2xl ">
-                  {data.name}
-                </h2>
-              </div> */}
-
-
-              <div class="max-w-xs mx-auto">
-                <div class="flex flex-col">
-                  <div class="overflow-x-auto shadow-md sm:rounded-lg">
-                    <div class="inline-block min-w-full align-middle">
-                      <div class="overflow-hidden ">
-                        <table class="min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-700">
-                          <thead class="bg-gray-100 dark:bg-gray-700">
+              <div className="max-w-xs mx-auto">
+                <div className="flex flex-col">
+                  <div className="overflow-x-auto shadow-md sm:rounded-lg">
+                    <div className="inline-block min-w-full align-middle">
+                      <div className="overflow-hidden ">
+                        <table className="min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-700">
+                          <thead className="bg-gray-100 dark:bg-gray-700">
                             <tr>
-                              <th scope="col" class="py-3 px-6 text-xs font-bold tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
-                              {data.name}
+                              <th scope="col" className="py-3 px-6 text-xs font-bold tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                                {data.name}
                               </th>
                             </tr>
                           </thead>
-                          <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
-                          {data.files.map((item) => (
-                            <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
-                            <button onClick={() => handleSelectSong(item.src)} key={item.src} >                            
-                              <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">{item.filename}</td>
-                              </button>
-                            </tr>
+                          <tbody className="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
+                            {data.files.map((item) => (
+                              <tr className="hover:bg-gray-100 dark:hover:bg-gray-700">
+                                <td className="cursor-pointer py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"  onClick={() => handleSelectSong(item.src)} key={item.src} >
+                                    {item.filename}
+                                </td>
+                              </tr>
                             ))}
                           </tbody>
                         </table>
@@ -151,25 +91,6 @@ export function MainView({ paths, files, selectSong }) {
                   </div>
                 </div>
               </div>
-
-              {/* <div className="mt-6 grid grid-cols-[repeat(auto-fit,minmax(180px,_1fr))] overflow-hidden grid-rows-[fr_0_0_0_0_0] items-stretch justify-start gap-y-6">
-
-                {data.files.map((item) => (
-                  <button onClick={() => handleSelectSong(item.src)} key={item.src} >
-                    <Card
-
-                      id={item.filename}
-                      image='/default.png'
-                      title={item.dirName}
-                      text={item.filename}
-
-
-                    >
-                    </Card>
-                  </button>
-
-                ))}
-              </div> */}
             </section>
           ))}
         </div>
