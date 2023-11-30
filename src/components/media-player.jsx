@@ -33,7 +33,8 @@ const MediaPlayer = ({playlist, songPosition}, ref) => {
   }
   return (
     <>
-    <span className='fixed bottom-1 left-20 text-center m-0'>{playlist[songPosition].filename} - {playlist[songPosition].filename}</span>
+    {/* <span className='fixed bottom-1 left-20 text-center m-0'>{playlist[songPosition].filename} - {playlist[songPosition].filename}</span> */}
+    <div className='fixed bottom-0 w-full'>
     <AudioPlayer
       volume="0.5"
       src={playlist[songPosition].src}
@@ -44,6 +45,7 @@ const MediaPlayer = ({playlist, songPosition}, ref) => {
     // Try other props!
     >
     </AudioPlayer>
+    </div>
 
    </> 
   )
