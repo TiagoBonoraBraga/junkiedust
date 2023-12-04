@@ -69,9 +69,9 @@ export function MainView({ paths, files, selectSong }) {
                     <div className="inline-block min-w-full align-middle">
                       <div className="overflow-hidden ">
                         <table className="min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-700">
-                          <thead className="bg-gray-100 dark:bg-gray-700">
+                          <thead className="bg-purple-500 dark:bg-gray-700">
                             <tr>
-                              <th scope="col" className="py-3 px-6 text-xs font-bold tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                              <th scope="col" className="py-3 px-6 text-xs font-bold tracking-wider text-left text-white uppercase dark:text-gray-400">
                                 {data.name}
                               </th>
                             </tr>
