@@ -1,12 +1,12 @@
 export const letters = [
     {
-        title: 'Planet trouble',
+        title: 'Planet Trouble',
         letter: 
-        'You live, in a world full of sadness\n Sickness and disease\n What you gonna do \nFor still\n In this planet trouble \n Planet trouble What you gonna do Planet trouble Want you runaway?\nThe world still full of problems\n And gotta nothing that you can do\nJust accept your life \n In the Way you can live\n Planet trouble \n What you gonna do \n Planet trouble \n Want you runaway?\n  If you keep on your on\n No help even for yourself\n cant find the cure\ncant find the cure\nPlanet trouble\nWhat you gonna do\nPlanet trouble \nWant you runaway? '        
+        'You live, in a world full of sadness Sickness and disease  What you gonna do For still In this planet trouble Planet trouble What you gonna do Planet trouble Want you runaway? The world still full of problems And gotta nothing that you can do Just accept your life In the Way you can live Planet trouble What you gonna do Planet trouble Want you runaway? If you keep on your on No help even for yourself cant find the cure cant find the cure Planet trouble What you gonna do Planet trouble Want you runaway? '        
     },
     {
-        title: 'lighter and thunder',
-        letter: 'When the sky is falling down\nraining knives from the clouds\nneeding a shelter \nconjuring for the thunder comes\nthe lightning shining your way\nthen you can see above\nbut still in doubt\nwitch road you can drive\nlightning and thunder\nlightning and thunder\nlightning and thunder\nlightning and thunder\nkeeping forward\nrocks falling and you need a shelter\nlightning and thunder\ngonna be your salvation\nlightning and thunder\nlightning and thunder\nlightning and thunder\nlightning and thunder'
+        title: 'Lighter and Thunder',
+        letter: 'When the sky is falling down raining knives from the clouds needing a shelter conjuring for the thunder comes the lightning shining your way then you can see above but still in doubt witch road you can drive lightning and thunder lightning and thunder lightning and thunder lightning and thunder keeping forward rocks falling and you need a shelter lightning and thunder gonna be your salvation lightning and thunder lightning and thunder lightning and thunder lightning and thunder'
     },
    
 ]
