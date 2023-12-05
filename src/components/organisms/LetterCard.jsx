@@ -9,7 +9,7 @@ export default function LetterCard() {
                         <div className="bg-purple-500 text-white flex flex-row justify-center items-center">
                             {letter.title}
                         </div>
-                        <div className="flex flex-row justify-center items-center">
+                        <div className="flex flex-row justify-center items-center p-5">
                            {letter.letter}
                         </div>
                     </section>
