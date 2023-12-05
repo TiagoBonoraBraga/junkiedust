@@ -1,12 +1,11 @@
 import Layout from "@/components/templates/Layout";
-
-export default function Letters( ) {
-    return(   
-    <div>
-        <Layout>
-        <p>removendo erro</p>
-
-        </Layout>
-    </div>    
+import LetterCard from "@/components/organisms/LetterCard"
+export default function Letters() {
+    return (
+        <div>
+            <Layout>
+                <LetterCard />
+            </Layout>
+        </div>
     )
 }
