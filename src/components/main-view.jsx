@@ -23,8 +23,8 @@ export function MainView({ paths, files, selectSong }) {
   };
 
   return (
-    <ScrollArea className="relative bg-[#121212]">
-      <div className="pb-4">
+    <ScrollArea className="relative bg-[#121212] flex flex-row">
+      <div className="pb-4 ">
         <header className="sticky top-0 h-16 bg-black/80 flex flex-row items-center justify-between px-8 z-10">
           <DropdownMenu open={open} onOpenChange={setOpen}>
             <DropdownMenuContent
