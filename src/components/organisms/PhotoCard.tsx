@@ -1,3 +1,5 @@
+import Image from 'next/image'
+import {photos} from '@/mocks/photos'
 import localFont from 'next/font/local'
 const superNought = localFont({ src: '../../styles/superNought.ttf' })
 
@@ -12,9 +14,15 @@ export default function () {
                                 {photo.title}
                             </div>
                         </div>
-                        <div className="flex flex-row justify-center items-center p-5 bg-white rounded-b-lg">
-                            {photo.Photo}
-                        </div>
+                        <div className="flex flex-row justify-center items-center ">
+                        <Image                        
+                            src={photo.photo} 
+                            className='p-0.5 bg-white rounded-b-lg' 
+                            width={400}
+                            height={400}
+                            alt='fotos'
+                            />
+                        </div>                        
                     </div>
                 ))}
             </section>
