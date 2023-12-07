@@ -1,4 +1,4 @@
-import { letters } from '@/mocks/Letters';
+import { letters } from '@/mocks/letters';
 
 export default function LetterCard() {
     return (
