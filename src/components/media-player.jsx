@@ -43,6 +43,8 @@ const MediaPlayer = ({playlist, songPosition}, ref) => {
       autoPlayAfterSrcChange={true}
       onClickNext={handleClickNext}
       onEnded={handleEnd}
+      autoPlay={true}
+      loop={true}
     >
     </AudioPlayer>
     </div>
