@@ -1,7 +1,5 @@
 import { useState } from "react";
-import localFont from 'next/font/local'
-const superNought = localFont({ src: '../../styles/superNought.ttf' })
-import CustomLogo from "../atoms/CustomLogo";
+import CustomLogo from "@/components/atoms/CustomLogo";
 
 export default function Header(){
     const [navbar, setNavbar] = useState(false);
@@ -54,7 +52,7 @@ export default function Header(){
               className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${navbar ? "block" : "hidden"
                 }`}
             >
-              <div className={superNought.className}>
+              
 
 
               <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
@@ -71,7 +69,7 @@ export default function Header(){
                   <a href="/letters">Letras</a>
                 </li>                  
               </ul>            
-              </div>
+              
             </div>
           </div>         
         </div>
