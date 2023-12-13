@@ -2,7 +2,7 @@ import Image from 'next/image'
 import { photos } from '@/mocks/photos'
 
 
-export default function () {
+export default function PhotoCard  () {
     return (
         <>
             <section className='mt-20 px-3 flex flex-wrap justify-center items-center ss:flex ss:flex-col ss:px-0 gap-5'>

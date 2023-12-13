@@ -2,7 +2,7 @@ import { lyricsData } from '@/mocks/lyrics';
 
 function NewlineText(props: { text: string; }) {
     const text = props.text;
-    return text.split('\n').map(str => <p className='w-full text-purple-600'>{str}</p>);
+    return text.split('\n').map(str => <p key={str} className='w-full text-purple-600'>{str}</p>);
 }
 
 export default function LyricCard() {
