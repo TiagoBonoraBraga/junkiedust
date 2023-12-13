@@ -5,7 +5,6 @@ import { File, Path } from '@/types/index'
 import { Print } from "../atoms/Print"
 
 export default function Layout({ paths, children }) {
-  const files = paths.map
   return (
     <>
       <Header />
@@ -13,12 +12,13 @@ export default function Layout({ paths, children }) {
         <div className="w-full  justify-center text-white">
           {children}
         </div>
-        <Print>{ }</Print>
+        {/* <Print>{files}</Print>
         <div>
           <Print>{paths}</Print>
-        </div>
-        {/* <Player songPosition={songPosition} paths={paths} /> */}
+        </div> */}
+        <Player paths={paths} />
       </div>
     </>
   )
 }
+

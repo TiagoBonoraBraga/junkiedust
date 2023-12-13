@@ -4,6 +4,7 @@ type File = {
     dirPath: string
 }
 type Path = {
-    name: string
+    name?: string,
+    files?: File[]
 }
 export type { File, Path }

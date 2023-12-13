@@ -1,5 +1,6 @@
 import { useState } from "react";
 import CustomLogo from "@/components/atoms/CustomLogo";
+import Link from 'next/link'
 
 export default function Header() {
   const [navbar, setNavbar] = useState(false);
@@ -57,16 +58,16 @@ export default function Header() {
 
             <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
               <li className="text-white-500 hover:text-white-500 hover:text-lg">
-                <a href="/">Home</a>
+                <Link href="/">Home</Link>
               </li>
               <li className="text-white-500 hover:text-white-500 hover:text-lg">
-                <a href="/galery">Galeria</a>
+                <Link href="/gallery">Galeria</Link>
               </li>
               <li className="text-white-500 hover:text-white-500 hover:text-lg">
-                <a href="/movies">Videos</a>
+                <Link href="/movies">Videos</Link>
               </li>
               <li className="text-white-500 hover:text-white-500 hover:text-lg">
-                <a href="/letters">Letras</a>
+                <Link href="/lyrics">Letras</Link>
               </li>
             </ul>
 
