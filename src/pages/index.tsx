@@ -1,93 +1,62 @@
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 // import { Sidebar } from "@/components/sidebar";
-import { MainView } from "@/components/main-view";
-import  MediaPlayer from "@/components/media-player";
-// import { Print } from "@/components/print";
-import  { getAllFilesAndPaths }  from '@/lib/files';
-import {useState, useRef, MutableRefObject} from "react";
 import Layout from "@/components/templates/Layout";
-import Head from "@/components/Head";
+import Head from "@/components/molecules/Head";
+import { MainView } from "@/components/templates/MainView";
+import  MediaPlayer from "@/components/organisms/Player";
+import { Print } from '@/components/atoms/Print'
+// import { Print } from "@/components/print";
+// import  { getAllFilesAndPaths }  from '@/lib/files';
+import {useState, useRef, MutableRefObject} from "react";
 
-interface ButtonProps {
-  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
-  // Other props...
-}
 
 type File = {
-  filename:string,
-  src:string , 
+  filename: string,
+  src: string,
   dirPath: string
 }
 type Path = {
-  name:string
+  name: string
 }
 
+function Home({ files, paths  }) {
 
-function Home({ files, paths }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const [songPosition, setSongPosition] = useState(0);
-    const handleSelectSong = (position:number) => {
+
+  const handleSelectSong = (position:number) => {
     // console.log(position);
     setSongPosition(position)
   };
-  // const childRef = useRef() as any;
-
-  // const handleSelectSong = (position:number) => {
-  //   console.log(position);
-  //   childRef.current.childFunction(position);
-  // };
-
-  // const [songPosition, setSongPosition] = useState(0);
-  
-
-
 
   return (
     <>    
     <Head />
-    <Layout>
-    <div className="w-full grid grid-rows-[1fr_90px]">
-      {/* <Print>{paths}</Print>
-      <Print>{files}</Print> */}
-      {/* h-[calc(100vh_-_90px)] grid grid-cols-[260px_1fr]  dentro da div debaixo pra dividir dae abre o SideBar*/}
-      <div className="w-full  justify-center">
-      {/* <>|{songPosition}|</> */}
-      {/* <button onClick={event => handleSelectSong(5)} >Call child functions</button> */}
-        {/* <Sidebar /> */}
-        {/* <MainView files={files} paths={paths}  selectSong={(position: number) => handleSelectSong(position)}/> */}
-        <MainView files={files} paths={paths}  selectSong={(position: number) => handleSelectSong(position)}/>
-      </div>
-      
-      <MediaPlayer songPosition={songPosition} playlist={files} />
-      
-      {/* <MediaPlayer ref={childRef} playlist={files} /> */}
-    </div>
-    </Layout>
+    {/* <Print>{files}</Print> */}
+      <Layout files={files} paths={paths} songPosition={songPosition}>
+        <h1 className="">After out spaceship crash on earth </h1>
+          {/* <MainView files={files} paths={paths}  selectSong={(position: number) => handleSelectSong(position)}/> */}
+      </Layout>
     </>
   );
 }
 
 
-export const getServerSideProps: GetServerSideProps = async () => {
-
-  const res = getAllFilesAndPaths('./public/songs', [],[])
-  const files: File[] = res.arrayOfFiles.reverse();
-  const paths: Path[] = res.arrayOfPaths.reverse();
-  // const list = await getAllFiles('/public/songs',[])
-  // By returning { props: { posts } }, the Blog component
-  // will receive `posts` as a prop at build time
-
-  if (!files) {
-    return {
-      notFound: true,
-    }
-  }  
-  return {
-    props: {
-      files: files,
-      paths: paths
-    },
-  }
-}
+// export const getServerSideProps: GetServerSideProps = async () => {
+//   const res = getAllFilesAndPaths('./public/songs', [],[])
+//   const files: File[] = res.arrayOfFiles.reverse();
+//   const paths: Path[] = res.arrayOfPaths.reverse();
+//   if (!files) {
+//     return {
+//       notFound: true,
+//     }
+//   }  
+//   return {
+//     props: {
+//       files: files,
+//       paths: paths
+//     },
+//   }
+// }
  
 
 

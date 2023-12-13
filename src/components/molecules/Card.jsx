@@ -7,7 +7,7 @@ import {
   ContextMenuSub,
   ContextMenuSubTrigger,
   ContextMenuSubContent,
-} from "@/components/ui/context-menu";
+} from "@/components/atoms/context-menu";
 import { Icons } from "@/components/icons";
 import { ResponsiveImage } from "@/components/responsive-image";
 

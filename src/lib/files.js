@@ -1,27 +1,27 @@
-import  fs from "fs";
+import * as fs from 'fs';
 import path from "path";
 
-export const getAllFilesAndPaths= function(dirPath, arrayOfFiles, arrayOfPaths) {
+export const getAllFilesAndPaths = function (dirPath, arrayOfPaths) {
   let files = fs.readdirSync(dirPath)
 
-  arrayOfFiles = arrayOfFiles || []
+  // arrayOfFiles = arrayOfFiles || []
   arrayOfPaths = arrayOfPaths || []
-//   let arrayAux = {}
+  //   let arrayAux = {}
   files.forEach(function (file) {
     if (fs.statSync(dirPath + '/' + file).isDirectory()) {
-      arrayOfPaths.push( {name: file })
-      let arrayAux = getAllFilesAndPaths(dirPath + '/' + file, arrayOfFiles, arrayOfPaths)
+      arrayOfPaths.push({ name: file })
+      let arrayAux = getAllFilesAndPaths(dirPath + '/' + file, arrayOfPaths)
       arrayOfPaths = arrayAux.arrayOfPaths
-      arrayOfFiles = arrayAux.arrayOfFiles
+      // arrayOfFiles = arrayAux.arrayOfFiles
     } else {
-      let arquivo =  { src: path.join('/',dirPath.replace('/public',''), '/', file), filename: file, dirPath: arrayOfPaths[arrayOfPaths.length-1].name}
-      arrayOfFiles.push(arquivo)
-      let files =  arrayOfPaths[arrayOfPaths.length-1].files || [];
-      arrayOfPaths[arrayOfPaths.length-1] = { name: arrayOfPaths[arrayOfPaths.length-1].name, files: [...files, arquivo]}
+      let arquivo = { src: path.join('/', dirPath.replace('/public', ''), '/', file), filename: file, dirPath: arrayOfPaths[arrayOfPaths.length - 1].name }
+      // arrayOfFiles.push(arquivo)
+      let files = arrayOfPaths[arrayOfPaths.length - 1].files || [];
+      arrayOfPaths[arrayOfPaths.length - 1] = { name: arrayOfPaths[arrayOfPaths.length - 1].name, files: [...files, arquivo] }
     }
   })
 
-  return {arrayOfFiles, arrayOfPaths}
+  return { arrayOfPaths }
 }
 
 

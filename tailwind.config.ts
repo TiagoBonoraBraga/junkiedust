@@ -9,19 +9,20 @@ const config: Config = {
   ],
   theme: {
     screens: {
-      ss: { max: '1030px'},
-      s:  '820px',
+      ss: { max: '1030px' },
+      s: '820px',
       sm: '640px',
       md: '768px',
       lg: '1024px',
       xl: '1280px',
     },
     extend: {
+
       // fontFamily: {
       //   sans: ['var(--font-supernought)']
       // },
     },
-    
+
   },
   plugins: [require("tailwindcss-animate")],
 }
