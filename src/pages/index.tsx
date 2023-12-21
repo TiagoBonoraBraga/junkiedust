@@ -35,7 +35,7 @@ export default function Page() {
   return (
     <>
       <Head />
-      <h1 className="">After out spaceship crash on earth </h1>
+    
     </>
 
   )

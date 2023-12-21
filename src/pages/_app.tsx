@@ -1,7 +1,7 @@
 import '@/styles/globals.css';
 import App, { AppContext, AppInitialProps, AppProps } from 'next/app'
 // import { RecoilRoot } from 'recoil'
-import useSWR from 'swr'
+// import useSWR from 'swr'
 
 // // import { Print } from "@/components/print";
 import { File, Path } from '@/types/index'
