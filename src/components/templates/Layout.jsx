@@ -9,12 +9,11 @@ export default function Layout({ paths, children }) {
     <>
       <Header />
       <div className="w-full grid grid-rows-[1fr_90px] text-white">
-        <div className="w-full  justify-center text-white flex flex-row">
+        <div className="w-full  justify-center text-white flex flex-row ss:flex ss:flex-col">
 
-            <Player paths={paths}  />
-          <aside className="flex-1 h-lvh overflow-y-scroll snap-mandatory">
-          </aside>
-          <main >
+          
+            <Player paths={paths}   />
+          <main>
           {children} 
           </main>
         </div>
