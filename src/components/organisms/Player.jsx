@@ -39,7 +39,7 @@ const Player = ({ paths }, ref) => {
 
 
       {/* <span className='fixed bottom-1 left-20 text-center m-0'>{playlist[currentTrack].filename} - {playlist[currentTrack].filename}</span> */}
-      <div className="mt-8 mb-8 px-3 fixed right-5">
+      <aside className="mt-8 mb-8 px-3 stycky right-5 flex flex-col gap-3  ">
         {/* <Print>{playlist}</Print> */}
 
         {/* <Print>{paths}</Print> */}
@@ -76,7 +76,7 @@ const Player = ({ paths }, ref) => {
             </div>
           </section>
         ))}
-      </div>
+      </aside>
       <div className='fixed bottom-0 w-full bg-white'>
 
         <h3 className='text-center w-full font-extrabold text-black'>{playlist[currentTrack].filename}</h3>

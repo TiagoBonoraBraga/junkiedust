@@ -9,14 +9,19 @@ export default function Layout({ paths, children }) {
     <>
       <Header />
       <div className="w-full grid grid-rows-[1fr_90px] text-white">
-        <div className="w-full  justify-center text-white">
-          {children}
+        <div className="w-full  justify-center text-white flex flex-row ss:flex ss:flex-col">
+
+          
+            <Player paths={paths}   />
+          <main>
+          {children} 
+          </main>
         </div>
+        
         {/* <Print>{files}</Print>
         <div>
-          <Print>{paths}</Print>
-        </div> */}
-        <Player paths={paths} />
+        <Print>{paths}</Print>
+      </div> */}
       </div>
     </>
   )

@@ -5,7 +5,7 @@ import { photos } from '@/mocks/photos'
 export default function PhotoCard  () {
     return (
         <>
-            <section className='mt-20 px-3 flex flex-wrap justify-center items-center ss:flex ss:flex-col ss:px-0 gap-5'>
+            <section className='mt-20 px-3 flex flex-wrap justify-start items-start ml-10 ss:flex ss:flex-col ss:px-0 gap-5'>
                 {photos.map((photo, index) => (
                     <div key={index} className="w-1/4 ring-2 ring-purple-500 rounded-md ss:w-80 mb-10">
 
