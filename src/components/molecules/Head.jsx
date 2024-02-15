@@ -22,7 +22,7 @@ export default function SeoHead() {
             <meta name="creator" content="Junkie Dust" />
             <meta name="publisher" content="Fpinfo - Leoanrdo Maia - Tiago Braga" />
             <link rel="canonical" href="https://junkiedust.com" />
-            <link
+            {/* <link
                 rel="alternate"
                 hreflang="pt-BR"
                 href="https://junkiedust.com/pt-BR"
@@ -31,7 +31,7 @@ export default function SeoHead() {
                 rel="alternate"
                 hreflang="en-US"
                 href="https://junkiedust.com/en-US"
-            />
+            /> */}
             <meta
                 property="og:image"
                 content="https://junkiedust.com/default.png"

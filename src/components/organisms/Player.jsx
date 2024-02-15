@@ -26,8 +26,9 @@ const Player = ({ paths }, ref) => {
   };
 
   const handleEnd = () => {
+    // alert('AQUI');
     // currentTrack < playlist.length - 1 ? currentTrack + 1 : 0
-    // console.log('end')
+    // console.log('currentTrack', currentTrack)
     setTrackIndex((currentTrack) =>
       currentTrack < playlist.length - 1 ? currentTrack + 1 : 0
     );
@@ -88,7 +89,7 @@ const Player = ({ paths }, ref) => {
           onClickNext={handleClickNext}
           onEnded={handleEnd}
           autoPlay={true}
-          loop={true}
+          // loop={true}
         >
         </AudioPlayer>
       </div>
