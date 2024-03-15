@@ -7,7 +7,7 @@ export default function Layout({ paths, children }) {
 
 
       <Header />
-      <video autoPlay={true} muted loop={true} className="md:fixed md:-z-10 md:w-100 md:bottom-32 md:right-2">
+      <video autoPlay={true} muted={true} loop={true} className="md:fixed md:-z-10 md:w-100 md:bottom-32 md:right-2">
         <source src="/MUMMRA.mp4" type="video/mp4" />
       </video>
 
