@@ -1,8 +1,8 @@
 import Header from '@/components/organisms/Header';
 import Player from '@/components/organisms/Player';
 import Image from 'next/image';
-import cat from '../../../public/cat-kitty.gif';
-// import mum from '../../../public/MUMMRA2.gif';
+// import bg from '../../../public/cat-kitty.gif';
+import bg from '../../../public/mumm-ra-munn-ra.gif';
 import { useEffect, useRef } from 'react';
 
 export default function Layout({ paths, children }) {
@@ -21,7 +21,7 @@ export default function Layout({ paths, children }) {
       <div className="hidden md:block md:bottom-28 md:right-0  w-full h-full -z-10 fixed">
         <Image
           ref={imageBgRef}
-          src={cat}
+          src={bg}
           layout="fill" // required
           objectFit="cover" // change to suit your needs
           alt="Junkie Way"
