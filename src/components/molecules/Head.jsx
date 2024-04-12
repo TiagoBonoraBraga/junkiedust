@@ -6,12 +6,12 @@ export default function SeoHead() {
 
     return (
         <Head>          
-            <title>JUNKIE DUST - STONER PSICODELIC</title>
+            <title>JUNKIE DUST - EVIL STONER</title>
             <meta name="robots" content='follow, index' />
-            <meta content=' JUNKIE DUST - STONER PSICODELIC - JUNKIE DUST os sons mais pesados, lentos e psicodélicos desse plano terreno' name="description" />
+            <meta content='JUNKIE DUST - DARK EVIL STONER PSYCHEDELIC - Bem-vindo ao mundo sonoro sombrio da Junkie Dust, onde o rugido dos amplificadores e a batida contundente das baquetas convergem para criar uma experiência visceral e inebriante. Mergulhe em um universo onde o metal encontra o psicodélico, e o resultado é uma viagem sônica que desafia os limites da mente e do corpo.' name="description" />
             <meta property="og:url" content='https://junkiedust.com/' />
             <link rel="canonical" href='https://junkiedust.com/' />
-            <meta name="application-name" content='JUNKIE DUST - STONER PSICODELIC' />
+            <meta name="application-name" content='JUNKIE DUST - EVIL STONER' />
             <meta name="author" content="Leonardo Maia - Tiago Braga" />
             <link rel="author" href="https://junkiedust.com" />
             <meta
@@ -39,10 +39,10 @@ export default function SeoHead() {
 
             {/* Open Graph */}
             <meta property="og:type" content="website" />
-            <meta property="og:site_name" content='JUNKIE DUST - STONER PSICODELIC' />
+            <meta property="og:site_name" content='JUNKIE DUST - EVIL STONER' />
             <meta property="og:locale" content="pt_BR" />
             <meta property="og:url" content="https://junkiedust.com" />
-            <meta property="og:description" content="JUNKIE DUST - STONER PSICODELIC - JUNKIE DUST os sons mais pesados, lentos e psicodélicos desse plano terreno" />
+            <meta property="og:description" content="JUNKIE DUST - EVIL STONER - JUNKIE DUST os sons mais pesados, lentos e psicodélicos desse plano terreno" />
             <meta property="og:title" content='JUNKIE DUST' />
             <meta
                 property="og:image:url"
@@ -88,7 +88,7 @@ export default function SeoHead() {
             <meta name="twitter:card" content="summary_large_image" />
             {/* <meta name="twitter:site" content="@F2aldi" /> */}
             <meta name="twitter:title" content='JUNKIE DUST' />
-            <meta name="twitter:description" content="JUNKIE DUST - STONER PSICODELIC - JUNKIE DUST os sons mais pesados, lentos e psicodélicos desse plano terreno" />
+            <meta name="twitter:description" content="JUNKIE DUST - EVIL STONER - JUNKIE DUST os sons mais pesados, lentos e psicodélicos desse plano terreno" />
             <meta name="twitter:image" content='https://junkiedust.com/default.png' />
             <meta
                 name="author"
