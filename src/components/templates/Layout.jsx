@@ -4,7 +4,7 @@ import Image from 'next/image';
 // import bg from '../../../public/cat-kitty.gif';
 import bg from '../../../public/mumm-ra-munn-ra.gif';
 import { useEffect, useRef } from 'react';
-
+import YouTubeVideo from '@/components/molecules/YouTubeVideo';
 export default function Layout({ paths, children }) {
   const imageBgRef = useRef(null);
   // useEffect(() => {
@@ -18,6 +18,10 @@ export default function Layout({ paths, children }) {
   return (
     <>
       <Header />
+      <div className="container mx-auto p-4">
+        <YouTubeVideo videoId={'DbDpiZPscko'} />
+      </div>
+
       <div className="hidden md:block md:bottom-28 md:right-0  w-full h-full -z-10 fixed">
         <Image
           ref={imageBgRef}
