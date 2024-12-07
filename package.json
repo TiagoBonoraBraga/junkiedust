@@ -11,15 +11,7 @@
     "debug:build:prod": "npm run build && NODE_OPTIONS='--inspect' npm run start "
   },
   "dependencies": {
-    "@heroicons/react": "^2.0.18",
     "@next/third-parties": "^14.2.5",
-    "@radix-ui/react-aspect-ratio": "^1.0.1",
-    "@radix-ui/react-avatar": "^1.0.1",
-    "@radix-ui/react-context-menu": "^2.1.2",
-    "@radix-ui/react-dropdown-menu": "^2.0.3",
-    "@radix-ui/react-scroll-area": "^1.0.2",
-    "@radix-ui/react-slider": "^1.1.0",
-    "@radix-ui/react-tooltip": "^1.0.4",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
@@ -29,6 +21,7 @@
     "eslint": "^8",
     "eslint-config-prettier": "^9.1.0",
     "fs": "^0.0.1-security",
+    "knip": "^5.39.2",
     "next": "^14.2.5",
     "os": "^0.1.2",
     "path": "^0.12.7",
@@ -39,7 +32,6 @@
     "react-h5-audio-player": "^3.9.0",
     "recoil": "^0.7.7",
     "swr": "^2.2.4",
-    "tailwind-merge": "^1.10.0",
     "tailwindcss": "^3.3.0",
     "tailwindcss-animate": "^1.0.5",
     "typescript": "^5"
