@@ -1,6 +1,6 @@
-import { useState } from "react";
-import CustomLogo from "@/components/atoms/CustomLogo";
-import Link from 'next/link'
+import { useState } from 'react';
+import CustomLogo from '@/components/atoms/CustomLogo';
+import Link from 'next/link';
 
 export default function Header() {
   const [navbar, setNavbar] = useState(false);
@@ -50,12 +50,10 @@ export default function Header() {
         </div>
         <div>
           <div
-            className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${navbar ? "block" : "hidden"
-              }`}
+            className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${
+              navbar ? 'block' : 'hidden'
+            }`}
           >
-
-
-
             <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
               <li className="text-white-500 hover:text-white-500 hover:text-lg">
                 <Link href="/">Home</Link>
@@ -70,10 +68,9 @@ export default function Header() {
                 <Link href="/lyrics">Letras</Link>
               </li>
             </ul>
-
           </div>
         </div>
       </div>
     </nav>
-  )
+  );
 }

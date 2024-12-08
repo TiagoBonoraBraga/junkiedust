@@ -11,6 +11,7 @@
     "debug:build:prod": "npm run build && NODE_OPTIONS='--inspect' npm run start "
   },
   "dependencies": {
+    "@google-cloud/local-auth": "^3.0.1",
     "@next/third-parties": "^14.2.5",
     "@types/node": "^20",
     "@types/react": "^18",
@@ -21,6 +22,7 @@
     "eslint": "^8",
     "eslint-config-prettier": "^9.1.0",
     "fs": "^0.0.1-security",
+    "googleapis": "^144.0.0",
     "knip": "^5.39.2",
     "next": "^14.2.5",
     "os": "^0.1.2",
@@ -48,6 +50,7 @@
     "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.5.12",
     "tailwindcss": "^3.3.0",
+    "tslib": "^2.8.1",
     "typescript": "^5"
   },
   "browser": {

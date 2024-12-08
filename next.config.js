@@ -14,10 +14,10 @@ const nextConfig = {
   },
   images: {
     remotePatterns: [
-      { hostname: "tailwindui.com" },
-      { hostname: "caddy" },
-      { hostname: "localhost" },
-      { hostname: "pentecostes.fpinfo.com.br" },
+      { hostname: 'tailwindui.com' },
+      { hostname: 'caddy' },
+      { hostname: 'localhost' },
+      { hostname: 'pentecostes.fpinfo.com.br' },
     ],
     dangerouslyAllowSVG: true,
     contentDispositionType: 'attachment',

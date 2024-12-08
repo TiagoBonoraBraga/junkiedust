@@ -1,9 +1,11 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import { getAllFilesAndPaths } from '@/lib/files';
 import { Path } from '@/types';
 import type { NextApiRequest, NextApiResponse } from 'next';
+import * as fs from 'fs';
+import path from 'path';
+import getAllFilesAndPaths from '@/lib/filesPathList';
 
-export default async function handler(
+export async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Path[]>,
 ) {
