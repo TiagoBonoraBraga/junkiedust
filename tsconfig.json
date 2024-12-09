@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "ESNext",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -11,28 +11,18 @@
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "forceConsistentCasingInFileNames": true,
     "jsx": "preserve",
-    "importHelpers": true,
     "incremental": true,
+    "baseUrl": ".",
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./*"]
     }
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "src/lib/utils.js",
-    "src/lib/utils.js",
-    "src/lib/utils.js",
-    "src/components/atoms/Head.jsx",
-    "src/components/templates/Layout.jsx",
-    "src/lib/files.js",
-    "src/lib/files.jsx",
-    "src/pages/_app.jsx",
-    "src/pages/api/songs.jsx",
-    "src/components/molecules/YouTubeVideo.jsx"
-  ],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]
 }
