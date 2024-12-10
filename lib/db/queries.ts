@@ -12,7 +12,7 @@ export let getAllSongs = unstable_cache(
 );
 
 export let getSongById = unstable_cache(
-  async (id: string) => {
+  async (id: number) => {
     return db.query.songs.findFirst({
       where: eq(songs.id, id),
     });
@@ -30,7 +30,7 @@ export let getAllPlaylists = unstable_cache(
 );
 
 export let getPlaylistWithSongs = unstable_cache(
-  async (id: string) => {
+  async (id: number) => {
     let result = await db.query.playlists.findFirst({
       where: eq(playlists.id, id),
       with: {
@@ -68,8 +68,8 @@ export let getPlaylistWithSongs = unstable_cache(
 );
 
 export let addSongToPlaylist = async (
-  playlistId: string,
-  songId: string,
+  playlistId: number,
+  songId: number,
   order: number
 ) => {
   let result = await db
@@ -80,8 +80,8 @@ export let addSongToPlaylist = async (
 };
 
 export let removeSongFromPlaylist = async (
-  playlistId: string,
-  songId: string
+  playlistId: number,
+  songId: number
 ) => {
   let result = await db
     .delete(playlistSongs)
@@ -96,20 +96,20 @@ export let removeSongFromPlaylist = async (
 };
 
 export let createPlaylist = async (
-  id: string,
+  id: number,
   name: string,
   coverUrl?: string
 ) => {
   let result = await db
     .insert(playlists)
     .values({ id, name, coverUrl })
-    .returning();
+    .$returningId();
   revalidateTag("playlists");
   return result[0];
 };
 
 export let updatePlaylist = async (
-  id: string,
+  id: number,
   name: string,
   coverUrl?: string
 ) => {
@@ -117,12 +117,12 @@ export let updatePlaylist = async (
     .update(playlists)
     .set({ name, coverUrl, updatedAt: new Date() })
     .where(eq(playlists.id, id))
-    .returning();
+    .execute();
   revalidateTag("playlists");
   return result[0];
 };
 
-export let deletePlaylist = async (id: string) => {
+export let deletePlaylist = async (id: number) => {
   // First, delete all playlist songs
   await db.delete(playlistSongs).where(eq(playlistSongs.playlistId, id));
   // Then delete the playlist

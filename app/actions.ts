@@ -1,15 +1,15 @@
-'use server';
+"use server";
 
-import { createPlaylist } from '@/lib/db/queries';
-import { revalidatePath } from 'next/cache';
-import { db } from '@/lib/db/drizzle';
-import { playlists, playlistSongs, songs } from '@/lib/db/schema';
-import { eq, and, sql } from 'drizzle-orm';
-import { put } from '@vercel/blob';
+import { createPlaylist } from "@/lib/db/queries";
+import { revalidatePath } from "next/cache";
+import { db } from "@/lib/db/drizzle";
+import { playlists, playlistSongs, songs } from "@/lib/db/schema";
+import { eq, and, sql } from "drizzle-orm";
+import { put } from "@vercel/blob";
 
-export async function createPlaylistAction(id: string, name: string) {
+export async function createPlaylistAction(id: number, name: string) {
   // Let's only handle this on local for now
-  if (process.env.VERCEL_ENV === 'production') {
+  if (process.env.VERCEL_ENV === "production") {
     return;
   }
 
@@ -18,53 +18,53 @@ export async function createPlaylistAction(id: string, name: string) {
 
 export async function uploadPlaylistCoverAction(_: any, formData: FormData) {
   // Let's only handle this on local for now
-  if (process.env.VERCEL_ENV === 'production') {
+  if (process.env.VERCEL_ENV === "production") {
     return;
   }
 
-  const playlistId = formData.get('playlistId') as string;
-  const file = formData.get('file') as File;
+  const playlistId = formData.get("playlistId") as string;
+  const file = formData.get("file") as File;
 
   if (!file) {
-    throw new Error('No file provided');
+    throw new Error("No file provided");
   }
 
   try {
     const blob = await put(`playlist-covers/${playlistId}-${file.name}`, file, {
-      access: 'public',
+      access: "public",
     });
 
     await db
       .update(playlists)
       .set({ coverUrl: blob.url })
-      .where(eq(playlists.id, playlistId));
+      .where(eq(playlists.id, parseInt(playlistId)));
 
     revalidatePath(`/p/${playlistId}`);
 
     return { success: true, coverUrl: blob.url };
   } catch (error) {
-    console.error('Error uploading file:', error);
-    throw new Error('Failed to upload file');
+    console.error("Error uploading file:", error);
+    throw new Error("Failed to upload file");
   }
 }
 
 export async function updatePlaylistNameAction(
-  playlistId: string,
+  playlistId: number,
   name: string
 ) {
   // Let's only handle this on local for now
-  if (process.env.VERCEL_ENV === 'production') {
+  if (process.env.VERCEL_ENV === "production") {
     return;
   }
 
   await db.update(playlists).set({ name }).where(eq(playlists.id, playlistId));
 
-  revalidatePath('/', 'layout');
+  revalidatePath("/", "layout");
 }
 
-export async function deletePlaylistAction(id: string) {
+export async function deletePlaylistAction(id: number) {
   // Let's only handle this on local for now
-  if (process.env.VERCEL_ENV === 'production') {
+  if (process.env.VERCEL_ENV === "production") {
     return;
   }
 
@@ -78,7 +78,7 @@ export async function deletePlaylistAction(id: string) {
   });
 }
 
-export async function addToPlaylistAction(playlistId: string, songId: string) {
+export async function addToPlaylistAction(playlistId: number, songId: number) {
   // Check if the song is already in the playlist
   const existingEntry = await db
     .select()
@@ -92,7 +92,7 @@ export async function addToPlaylistAction(playlistId: string, songId: string) {
     .execute();
 
   if (existingEntry.length > 0) {
-    return { success: false, message: 'Song is already in the playlist' };
+    return { success: false, message: "Song is already in the playlist" };
   }
 
   // Get the current maximum order for the playlist
@@ -113,38 +113,38 @@ export async function addToPlaylistAction(playlistId: string, songId: string) {
     })
     .execute();
 
-  revalidatePath('/', 'layout');
+  revalidatePath("/", "layout");
 
-  return { success: true, message: 'Song added to playlist successfully' };
+  return { success: true, message: "Song added to playlist successfully" };
 }
 
 export async function updateTrackAction(_: any, formData: FormData) {
-  let trackId = formData.get('trackId') as string;
-  let field = formData.get('field') as string;
+  let trackId = formData.get("trackId") as string;
+  let field = formData.get("field") as string;
   let value = formData.get(field) as keyof typeof songs.$inferInsert | number;
 
-  if (value === 'bpm') {
+  if (value === "bpm") {
     value = parseInt(value as string);
   }
 
   let data: Partial<typeof songs.$inferInsert> = { [field]: value };
   await db.update(songs).set(data).where(eq(songs.id, trackId));
-  revalidatePath('/', 'layout');
+  revalidatePath("/", "layout");
 
-  return { success: true, error: '' };
+  return { success: true, error: "" };
 }
 
 export async function updateTrackImageAction(_: any, formData: FormData) {
-  let trackId = formData.get('trackId') as string;
-  let file = formData.get('file') as File;
+  let trackId = formData.get("trackId") as string;
+  let file = formData.get("file") as File;
 
   if (!trackId || !file) {
-    throw new Error('Missing trackId or file');
+    throw new Error("Missing trackId or file");
   }
 
   try {
     const blob = await put(`track-images/${trackId}-${file.name}`, file, {
-      access: 'public',
+      access: "public",
     });
 
     await db
@@ -152,11 +152,11 @@ export async function updateTrackImageAction(_: any, formData: FormData) {
       .set({ imageUrl: blob.url })
       .where(eq(songs.id, trackId));
 
-    revalidatePath('/', 'layout');
+    revalidatePath("/", "layout");
 
     return { success: true, imageUrl: blob.url };
   } catch (error) {
-    console.error('Error uploading file:', error);
-    throw new Error('Failed to upload file');
+    console.error("Error uploading file:", error);
+    throw new Error("Failed to upload file");
   }
 }

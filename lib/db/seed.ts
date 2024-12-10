@@ -4,18 +4,97 @@ import { parseBuffer } from "music-metadata";
 import { db } from "./drizzle";
 import { songs, playlists, playlistSongs } from "./schema";
 import { eq } from "drizzle-orm";
-import { put } from "@vercel/blob";
+//  import { put } from "@vercel/blob";
+import { put } from "../storage";
+import { generateLogoVariation } from "../imageGenerator";
+import { writeMetadata } from "../metadata";
+import { exit } from "process";
+import getAllFilesAndPaths from "../getAllFilesAndPaths";
 
 async function seed() {
   console.log("Starting seed process...");
+  // await generateImages();
   await seedSongs();
   await seedPlaylists();
   console.log("Seed process completed successfully.");
 }
 
+async function generateImages(destination?: string) {
+  const dir = path.join(process.cwd(), "public/songs");
+  const logoPath = path.resolve("public/logo_junkie_transparente.png"); // Path to your logo file
+  const prompt =
+    "A creative reinterpretation of a band's logo for each rehearsal realized the band named Junkie Dust, a mix of crazynes and emotions, purple way of life JUNKIE DUST"; // Prompt for the AI model
+
+  try {
+    const logoBuffer = await generateLogoVariation(logoPath, prompt);
+
+    // Save the generated image to a file (optional)
+    const album = `public/songs/${destination}/album_cover.png`;
+    await fs.writeFile(album, logoBuffer);
+    return album;
+    console.log("Logo variation saved to:", album);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+async function genereteMetadata(tracksDir = "public/songs") {
+  let filesArray = getAllFilesAndPaths(tracksDir, []);
+  // console.log(filesArray);
+  let imageBufferFileLogo = await fs.readFile(
+    `public/logo_junkie_transparente.png`
+  );
+  const { arrayOfPaths } = filesArray;
+  for (let dir of arrayOfPaths) {
+    const { name, files, fullPath } = dir;
+    let imageBufferFile = imageBufferFileLogo;
+    try {
+      await fs.access(`${fullPath}/album_cover.png`);
+      imageBufferFile = await fs.readFile(`${fullPath}/album_cover.png`);
+    } catch (error) {
+      console.log(
+        `album_cover.png not found in ${fullPath}, using default logo.`
+      );
+    }
+
+    // console.log(imageBufferFile);
+    if (files) {
+      for (let file of files) {
+        const { src, filename, dirPath } = file;
+
+        const metadataSong = {
+          title: filename, // Título da música
+          artist: "Junkie Dust", // Nome do artista
+          album: name, // Nome do álbum
+          genre: "Rock", // Gênero
+          year: "2024", // Ano
+          comment: {
+            language: "eng", // Idioma do comentário
+            text: "Junkie Dust Fragments of time", // Comentário adicional
+          },
+          image: {
+            mime: "image/jpeg", // Tipo MIME da imagem (jpeg, png, etc.)
+            type: {
+              id: 3, // Tipo da imagem (3 é 'Capa da frente')
+              name: "Front Cover",
+            },
+            description: "Capa da Música", // Descrição opcional
+            imageBuffer: imageBufferFile || imageBufferFileLogo, // Buffer da imagem de capa
+          },
+        };
+        console.log(metadataSong);
+        await writeMetadata(src, metadataSong);
+      }
+    }
+  }
+}
+
 async function seedSongs() {
-  let tracksDir = path.join(process.cwd(), "tracks");
-  let files = await fs.readdir(tracksDir);
+  let tracksDir = path.join(process.cwd(), "public/songs");
+
+  await genereteMetadata(tracksDir);
+
+  let files = await fs.readdir(tracksDir, { recursive: true });
 
   for (let file of files.filter(
     (file) => path.extname(file).toLowerCase() === ".mp3"
@@ -24,22 +103,24 @@ async function seedSongs() {
     let buffer = await fs.readFile(filePath);
     let metadata = await parseBuffer(buffer, { mimeType: "audio/mpeg" });
 
+    console.log("metadata", metadata);
+
     let imageUrl;
     if (metadata.common.picture && metadata.common.picture.length > 0) {
       let picture = metadata.common.picture[0];
       let imageBuffer = Buffer.from(picture.data);
-      let { url } = await put(
-        `album_covers/${file}.${picture.format}`,
-        imageBuffer,
-        {
-          access: "public",
-        }
-      );
+      let { url } = await put({
+        Key: `junkiedust/images/${file}.${picture.format}`,
+        Body: imageBuffer,
+        ContentType: picture.format,
+      });
       imageUrl = url;
+      console.log(`Uploaded image for: ${imageUrl}`, metadata);
     }
-
-    let { url: audioUrl } = await put(`audio/${file}`, buffer, {
-      access: "public",
+    let { url: audioUrl } = await put({
+      Key: `junkiedust/audio/${file}`,
+      Body: buffer,
+      ContentType: "audio/mpeg",
     });
 
     let songData = {
@@ -78,20 +159,8 @@ async function seedSongs() {
 }
 
 async function seedPlaylists() {
-  const playlistNames = [
-    "Techno Essentials",
-    "Deep House Vibes",
-    "EDM Bangers",
-    "Ambient Chill",
-    "Drum and Bass Mix",
-    "Trance Classics",
-    "Dubstep Drops",
-    "Electro Swing",
-    "Synthwave Retrowave",
-    "Progressive House",
-    "Minimal Techno",
-    "Future Bass",
-  ];
+  const dir = path.join(process.cwd(), "public/songs");
+  const playlistNames = await fs.readdir(dir);
 
   for (let name of playlistNames) {
     // Check if the playlist already exists
@@ -113,7 +182,7 @@ async function seedPlaylists() {
           coverUrl:
             "https://images.unsplash.com/photo-1470225620780-dba8ba36b745",
         })
-        .returning();
+        .$returningId();
       playlist = newPlaylist;
       console.log(`Seeded new playlist: ${name}`);
     }

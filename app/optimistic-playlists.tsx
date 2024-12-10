@@ -1,37 +1,37 @@
-'use client';
+"use client";
 
-import { ScrollArea } from '@/components/ui/scroll-area';
-import { Plus, MoreVertical, Trash } from 'lucide-react';
-import { useRef, useEffect } from 'react';
-import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
-import { Button } from '@/components/ui/button';
-import { usePlayback } from '@/app/playback-context';
-import { createPlaylistAction, deletePlaylistAction } from './actions';
-import { usePlaylist } from '@/app/hooks/use-playlist';
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { Plus, MoreVertical, Trash } from "lucide-react";
+import { useRef, useEffect } from "react";
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { usePlayback } from "@/app/playback-context";
+import { createPlaylistAction, deletePlaylistAction } from "./actions";
+import { usePlaylist } from "@/app/hooks/use-playlist";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
-import { Playlist } from '@/lib/db/types';
-import { v4 as uuidv4 } from 'uuid';
-import { SearchInput } from './search';
+} from "@/components/ui/dropdown-menu";
+import { Playlist } from "@/lib/db/types";
+import { v4 as uuidv4 } from "uuid";
+import { SearchInput } from "./search";
 
-let isProduction = process.env.NEXT_PUBLIC_VERCEL_ENV === 'production';
+let isProduction = process.env.NEXT_PUBLIC_VERCEL_ENV === "production";
 
 function PlaylistRow({ playlist }: { playlist: Playlist }) {
   let pathname = usePathname();
   let router = useRouter();
   let { deletePlaylist } = usePlaylist();
 
-  async function handleDeletePlaylist(id: string) {
+  async function handleDeletePlaylist(id: number) {
     deletePlaylist(id);
 
     if (pathname === `/p/${id}`) {
-      router.prefetch('/');
-      router.push('/');
+      router.prefetch("/");
+      router.push("/");
     }
 
     deletePlaylistAction(id);
@@ -44,7 +44,7 @@ function PlaylistRow({ playlist }: { playlist: Playlist }) {
         prefetch={true}
         href={`/p/${playlist.id}`}
         className={`block py-1 px-4 cursor-pointer hover:bg-[#1A1A1A] text-[#d1d5db] focus:outline-none focus:ring-[0.5px] focus:ring-gray-400 ${
-          pathname === `/p/${playlist.id}` ? 'bg-[#1A1A1A]' : ''
+          pathname === `/p/${playlist.id}` ? "bg-[#1A1A1A]" : ""
         }`}
         tabIndex={0}
       >
@@ -86,15 +86,15 @@ export function OptimisticPlaylists() {
   let { registerPanelRef, handleKeyNavigation, setActivePanel } = usePlayback();
 
   useEffect(() => {
-    registerPanelRef('sidebar', playlistsContainerRef);
+    registerPanelRef("sidebar", playlistsContainerRef);
   }, [registerPanelRef]);
 
   async function addPlaylistAction() {
     let newPlaylistId = uuidv4();
     let newPlaylist = {
       id: newPlaylistId,
-      name: 'New Playlist',
-      coverUrl: '',
+      name: "New Playlist",
+      coverUrl: "",
       createdAt: new Date(),
       updatedAt: new Date(),
     };
@@ -102,14 +102,14 @@ export function OptimisticPlaylists() {
     updatePlaylist(newPlaylistId, newPlaylist);
     router.prefetch(`/p/${newPlaylistId}`);
     router.push(`/p/${newPlaylistId}`);
-    createPlaylistAction(newPlaylistId, 'New Playlist');
+    createPlaylistAction(newPlaylistId, "New Playlist");
     router.refresh();
   }
 
   return (
     <div
       className="hidden md:block w-56 bg-[#121212] h-[100dvh] overflow-auto"
-      onClick={() => setActivePanel('sidebar')}
+      onClick={() => setActivePanel("sidebar")}
     >
       <div className="m-4">
         <SearchInput />
@@ -117,7 +117,7 @@ export function OptimisticPlaylists() {
           <Link
             href="/"
             className={`block py-1 px-4 -mx-4 text-xs text-[#d1d5db] hover:bg-[#1A1A1A] transition-colors focus:outline-none focus:ring-[0.5px] focus:ring-gray-400 ${
-              pathname === '/' ? 'bg-[#1A1A1A]' : ''
+              pathname === "/" ? "bg-[#1A1A1A]" : ""
             }`}
           >
             All Tracks
@@ -148,7 +148,7 @@ export function OptimisticPlaylists() {
         <ul
           ref={playlistsContainerRef}
           className="space-y-0.5 text-xs mt-[1px]"
-          onKeyDown={(e) => handleKeyNavigation(e, 'sidebar')}
+          onKeyDown={(e) => handleKeyNavigation(e, "sidebar")}
         >
           {playlists.map((playlist) => (
             <PlaylistRow key={playlist.id} playlist={playlist} />

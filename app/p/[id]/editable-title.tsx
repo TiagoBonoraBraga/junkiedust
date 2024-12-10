@@ -1,15 +1,15 @@
-'use client';
+"use client";
 
-import { useState, useRef, useEffect } from 'react';
-import { Input } from '@/components/ui/input';
-import { updatePlaylistNameAction } from '@/app/actions';
-import { usePlaylist } from '@/app/hooks/use-playlist';
+import { useState, useRef, useEffect } from "react";
+import { Input } from "@/components/ui/input";
+import { updatePlaylistNameAction } from "@/app/actions";
+import { usePlaylist } from "@/app/hooks/use-playlist";
 
 export function EditableTitle({
   playlistId,
   initialName,
 }: {
-  playlistId: string;
+  playlistId: number;
   initialName: string;
 }) {
   const [isEditing, setIsEditing] = useState(false);
@@ -26,7 +26,7 @@ export function EditableTitle({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsEditing(false);
-    if (name.trim() !== '' && name !== initialName) {
+    if (name.trim() !== "" && name !== initialName) {
       updatePlaylist(playlistId, { name });
       await updatePlaylistNameAction(playlistId, name);
     } else {
@@ -54,7 +54,7 @@ export function EditableTitle({
       className="text-xl sm:text-2xl font-bold cursor-pointer"
       onClick={() => setIsEditing(true)}
       onKeyDown={(e) => {
-        if (e.key === 'Enter') {
+        if (e.key === "Enter") {
           e.preventDefault();
           setIsEditing(true);
         }

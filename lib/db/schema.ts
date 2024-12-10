@@ -1,11 +1,10 @@
 import { relations, sql } from "drizzle-orm";
 import {
+  int,
   mysqlTable,
   varchar,
   datetime,
-  int,
   boolean,
-  uuid,
   index,
   uniqueIndex,
 } from "drizzle-orm/mysql-core";
@@ -13,19 +12,23 @@ import {
 export let songs = mysqlTable(
   "songs",
   {
-    id: uuid("id").primaryKey().defaultRandom(),
-    name: varchar("name", 255).notNull(),
-    artist: varchar("artist", 255).notNull(),
-    album: varchar("album", 255),
+    id: int("id").primaryKey().autoincrement(),
+    name: varchar("name", { length: 255 }).notNull(),
+    artist: varchar("artist", { length: 255 }).notNull(),
+    album: varchar("album", { length: 255 }),
     duration: int("duration").notNull(), // Duration in seconds
-    genre: varchar("genre", 255),
+    genre: varchar("genre", { length: 255 }),
     bpm: int("bpm"),
-    key: varchar("key", 255),
-    imageUrl: varchar("image_url", 255),
-    audioUrl: varchar("audio_url", 255).notNull(),
+    key: varchar("key", { length: 255 }),
+    imageUrl: varchar("image_url", { length: 255 }),
+    audioUrl: varchar("audio_url", { length: 255 }).notNull(),
     isLocal: boolean("is_local").notNull().default(true),
-    createdAt: datetime("created_at").notNull().defaultNow(),
-    updatedAt: datetime("updated_at").notNull().defaultNow(),
+    createdAt: datetime("created_at")
+      .notNull()
+      .default(sql`now()`),
+    updatedAt: datetime("updated_at")
+      .notNull()
+      .default(sql`now()`),
   },
   (table) => ({
     nameIndex: index("idx_songs_name").on(table.name),
@@ -41,11 +44,15 @@ export let songs = mysqlTable(
 export let playlists = mysqlTable(
   "playlists",
   {
-    id: uuid("id").primaryKey().defaultRandom(),
-    name: varchar("name", 255).notNull(),
-    coverUrl: varchar("cover_url", 255),
-    createdAt: datetime("created_at").notNull().defaultNow(),
-    updatedAt: datetime("updated_at").notNull().defaultNow(),
+    id: int("id").primaryKey().autoincrement(),
+    name: varchar("name", { length: 255 }).notNull(),
+    coverUrl: varchar("cover_url", { length: 255 }),
+    createdAt: datetime("created_at")
+      .notNull()
+      .default(sql`now()`),
+    updatedAt: datetime("updated_at")
+      .notNull()
+      .default(sql`now()`),
   },
   (table) => ({
     nameIndex: index("idx_playlists_name").on(table.name),
@@ -56,11 +63,11 @@ export let playlists = mysqlTable(
 export let playlistSongs = mysqlTable(
   "playlist_songs",
   {
-    id: uuid("id").primaryKey().defaultRandom(),
-    playlistId: uuid("playlist_id")
+    id: int("id").primaryKey().autoincrement(),
+    playlistId: int("playlist_id")
       .notNull()
       .references(() => playlists.id),
-    songId: uuid("song_id")
+    songId: int("song_id")
       .notNull()
       .references(() => songs.id),
     order: int("order").notNull(),

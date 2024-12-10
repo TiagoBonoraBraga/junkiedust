@@ -1,12 +1,12 @@
-'use client';
+"use client";
 
-import { useState, useRef, useEffect } from 'react';
-import { useActionState } from 'react';
-import { PencilIcon, Loader2, CheckIcon } from 'lucide-react';
-import { updateTrackAction, updateTrackImageAction } from './actions';
-import { usePlayback } from './playback-context';
-import { songs } from '@/lib/db/schema';
-import { cn } from '@/lib/utils';
+import { useState, useRef, useEffect } from "react";
+import { useActionState } from "react";
+import { PencilIcon, Loader2, CheckIcon } from "lucide-react";
+import { updateTrackAction, updateTrackImageAction } from "./actions";
+import { usePlayback } from "./playback-context";
+import { songs } from "@/lib/db/schema";
+import { cn } from "@/lib/utils";
 
 export function NowPlaying() {
   const { currentTrack } = usePlayback();
@@ -14,7 +14,7 @@ export function NowPlaying() {
     updateTrackImageAction,
     {
       success: false,
-      imageUrl: '',
+      imageUrl: "",
     }
   );
   const [showPencil, setShowPencil] = useState(false);
@@ -47,7 +47,7 @@ export function NowPlaying() {
       <h2 className="mb-3 text-sm font-semibold text-gray-200">Now Playing</h2>
       <div className="relative w-full aspect-square mb-3 group">
         <img
-          src={currentImageUrl || '/placeholder.svg'}
+          src={currentImageUrl || "/placeholder.svg"}
           alt={currentTrack.name}
           className="w-full h-full object-cover"
         />
@@ -69,16 +69,16 @@ export function NowPlaying() {
                   if (file.size <= 5 * 1024 * 1024) {
                     e.target.form?.requestSubmit();
                   } else {
-                    alert('File size exceeds 5MB limit');
-                    e.target.value = '';
+                    alert("File size exceeds 5MB limit");
+                    e.target.value = "";
                   }
                 }
               }}
             />
             <div
               className={cn(
-                'group-hover:bg-black group-hover:bg-opacity-50 rounded-full p-2',
-                imagePending && 'bg-opacity-50'
+                "group-hover:bg-black group-hover:bg-opacity-50 rounded-full p-2",
+                imagePending && "bg-opacity-50"
               )}
             >
               {imagePending ? (
@@ -106,25 +106,25 @@ export function NowPlaying() {
           label="Artist"
         />
         <EditableInput
-          initialValue={currentTrack.genre || ''}
+          initialValue={currentTrack.genre || ""}
           trackId={currentTrack.id}
           field="genre"
           label="Genre"
         />
         <EditableInput
-          initialValue={currentTrack.album || ''}
+          initialValue={currentTrack.album || ""}
           trackId={currentTrack.id}
           field="album"
           label="Album"
         />
         <EditableInput
-          initialValue={currentTrack.bpm?.toString() || ''}
+          initialValue={currentTrack.bpm?.toString() || ""}
           trackId={currentTrack.id}
           field="bpm"
           label="BPM"
         />
         <EditableInput
-          initialValue={currentTrack.key || ''}
+          initialValue={currentTrack.key || ""}
           trackId={currentTrack.id}
           field="key"
           label="Key"
@@ -136,7 +136,7 @@ export function NowPlaying() {
 
 interface EditableInputProps {
   initialValue: string;
-  trackId: string;
+  trackid: number;
   field: keyof typeof songs.$inferInsert;
   label: string;
 }
@@ -154,7 +154,7 @@ export function EditableInput({
   let formRef = useRef<HTMLFormElement>(null);
   let [state, formAction, pending] = useActionState(updateTrackAction, {
     success: false,
-    error: '',
+    error: "",
   });
 
   useEffect(() => {
@@ -180,7 +180,7 @@ export function EditableInput({
   }, [state.success]);
 
   function handleSubmit() {
-    if (value.trim() === '' || value === initialValue) {
+    if (value.trim() === "" || value === initialValue) {
       setIsEditing(false);
       return;
     }
@@ -190,10 +190,10 @@ export function EditableInput({
   }
 
   function handleKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
-    if (e.key === 'Enter') {
+    if (e.key === "Enter") {
       e.preventDefault();
       handleSubmit();
-    } else if (e.key === 'Escape') {
+    } else if (e.key === "Escape") {
       setIsEditing(false);
       setValue(initialValue);
     }
@@ -222,10 +222,10 @@ export function EditableInput({
               onKeyDown={handleKeyDown}
               onBlur={handleSubmit}
               className={cn(
-                'bg-transparent w-full focus:outline-none p-0',
-                state.error && 'text-red-500'
+                "bg-transparent w-full focus:outline-none p-0",
+                state.error && "text-red-500"
               )}
-              aria-invalid={state.error ? 'true' : 'false'}
+              aria-invalid={state.error ? "true" : "false"}
               aria-describedby={state.error ? `${field}-error` : undefined}
             />
           </form>
@@ -236,14 +236,14 @@ export function EditableInput({
             role="button"
             tabIndex={0}
             onKeyDown={(e) => {
-              if (e.key === 'Enter' || e.key === ' ') {
+              if (e.key === "Enter" || e.key === " ") {
                 setIsEditing(true);
               }
             }}
             aria-label={`Edit ${label}`}
           >
-            <span className={cn(value ? '' : 'text-muted-foreground')}>
-              {value || '-'}
+            <span className={cn(value ? "" : "text-muted-foreground")}>
+              {value || "-"}
             </span>
           </div>
         )}

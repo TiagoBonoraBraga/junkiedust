@@ -1,18 +1,18 @@
-import { Button } from '@/components/ui/button';
-import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
-import { ChevronLeft, ChevronRight, Shuffle } from 'lucide-react';
-import { TrackTable } from './track-table';
-import { getPlaylistWithSongs } from '@/lib/db/queries';
-import { notFound } from 'next/navigation';
-import Link from 'next/link';
-import { formatDuration } from '@/lib/utils';
-import { CoverImage } from './cover-image';
-import { EditableTitle } from './editable-title';
+import { Button } from "@/components/ui/button";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import { ChevronLeft, ChevronRight, Shuffle } from "lucide-react";
+import { TrackTable } from "./track-table";
+import { getPlaylistWithSongs } from "@/lib/db/queries";
+import { notFound } from "next/navigation";
+import Link from "next/link";
+import { formatDuration } from "@/lib/utils";
+import { CoverImage } from "./cover-image";
+import { EditableTitle } from "./editable-title";
 
 export default async function PlaylistPage({
   params,
 }: {
-  params: Promise<{ id: string }>;
+  params: Promise<{ id: number }>;
 }) {
   let id = (await params).id;
   let playlist = await getPlaylistWithSongs(id);

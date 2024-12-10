@@ -10,4 +10,4 @@ if (!process.env.MYSQL_URL) {
 }
 
 export const client = await mysql.createConnection(process.env.MYSQL_URL);
-export const db = drizzle(client, { schema });
+export const db = drizzle(client, { schema, mode: "default" });
