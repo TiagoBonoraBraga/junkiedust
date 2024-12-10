@@ -1,4 +1,4 @@
-import type { NextConfig } from 'next';
+import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   devIndicators: {
@@ -8,17 +8,17 @@ const nextConfig: NextConfig = {
     ppr: true,
     reactCompiler: true,
     serverActions: {
-      bodySizeLimit: '5mb',
+      bodySizeLimit: "5mb",
     },
   },
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'ijlyviwppydvzsmm.public.blob.vercel-storage.com',
-        port: '',
-        pathname: '/**',
-        search: '',
+        protocol: "https",
+        hostname: "junkiedust.com",
+        port: "",
+        pathname: "/**",
+        search: "",
       },
     ],
   },
